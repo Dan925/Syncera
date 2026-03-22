@@ -178,7 +178,12 @@ const altPath = getLocalePath(altLocale);
     <p class="text-cream/80 mb-12 text-lg">
       {i.contact.subtitle}
     </p>
-    <form class="space-y-6 text-left" id="contact-form">
+    <form class="space-y-6 text-left" id="contact-form"
+          data-sending={i.contact.sending}
+          data-success={i.contact.success}
+          data-error={i.contact.error}
+          data-rate-limit={i.contact.rateLimit}
+          data-submit-text={i.contact.submit}>
       <div class="grid md:grid-cols-2 gap-6">
         <div>
           <label for="name" class="block text-cream/70 text-sm mb-2">{i.contact.nameLabel}</label>
@@ -197,11 +202,12 @@ const altPath = getLocalePath(altLocale);
                   class="w-full bg-transparent border-b border-cream/30 text-cream py-3 focus:border-cream outline-none transition-colors resize-none"></textarea>
       </div>
       <div class="text-center pt-4">
-        <button type="submit"
-                class="border-2 border-cream text-cream px-12 py-3 text-sm tracking-[0.3em] font-medium hover:bg-cream hover:text-brown-900 transition-all duration-300">
+        <button type="submit" id="contact-submit"
+                class="border-2 border-cream text-cream px-12 py-3 text-sm tracking-[0.3em] font-medium hover:bg-cream hover:text-brown-900 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
           {i.contact.submit}
         </button>
       </div>
+      <p id="form-status" class="text-center mt-4 text-sm hidden"></p>
     </form>
   </div>
 </section>
@@ -222,5 +228,61 @@ const altPath = getLocalePath(altLocale);
   });
   menu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => menu?.classList.add('hidden'));
+  });
+
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement | null;
+  const status = document.getElementById('form-status') as HTMLParagraphElement | null;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!submitBtn || !status) return;
+
+    const msgs = {
+      sending: form.dataset.sending || 'Sending...',
+      success: form.dataset.success || 'Sent!',
+      error: form.dataset.error || 'Error.',
+      rateLimit: form.dataset.rateLimit || 'Too many requests.',
+      submit: form.dataset.submitText || 'SEND',
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = msgs.sending;
+    status.classList.add('hidden');
+
+    const data = {
+      name: (form.querySelector('#name') as HTMLInputElement).value.trim(),
+      email: (form.querySelector('#email') as HTMLInputElement).value.trim(),
+      message: (form.querySelector('#message') as HTMLTextAreaElement).value.trim(),
+    };
+
+    try {
+      const res = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      status.classList.remove('hidden', 'text-green-400', 'text-red-400');
+
+      if (res.ok) {
+        status.textContent = msgs.success;
+        status.classList.add('text-green-400');
+        form.reset();
+      } else if (res.status === 429) {
+        status.textContent = msgs.rateLimit;
+        status.classList.add('text-red-400');
+      } else {
+        status.textContent = msgs.error;
+        status.classList.add('text-red-400');
+      }
+    } catch {
+      status.classList.remove('hidden', 'text-green-400', 'text-red-400');
+      status.textContent = msgs.error;
+      status.classList.add('text-red-400');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = msgs.submit;
+    }
   });
 </script>

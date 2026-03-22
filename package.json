@@ -9,7 +9,10 @@
   },
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.37.0",
     "astro": "^5.18.1",
+    "resend": "^6.9.4",
     "tailwindcss": "^3.4.19"
   }
 }

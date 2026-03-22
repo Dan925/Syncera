@@ -84,6 +84,10 @@ export const translations = {
       emailLabel: 'Email',
       messageLabel: 'Message',
       submit: 'ENVOYER',
+      sending: 'ENVOI EN COURS...',
+      success: 'Message envoyé avec succès!',
+      error: "Une erreur s'est produite. Veuillez réessayer.",
+      rateLimit: 'Trop de messages. Veuillez réessayer plus tard.',
     },
     footer: {
       rights: '© 2026 Syncèra Digitale Studio. Tous droits réservés.',
@@ -174,6 +178,10 @@ export const translations = {
       emailLabel: 'Email',
       messageLabel: 'Message',
       submit: 'SEND',
+      sending: 'SENDING...',
+      success: 'Message sent successfully!',
+      error: 'Something went wrong. Please try again.',
+      rateLimit: 'Too many messages. Please try again later.',
     },
     footer: {
       rights: '© 2026 Syncèra Digitale Studio. All rights reserved.',
