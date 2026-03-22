@@ -1,0 +1,303 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="Syncèra Digitale Studio">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#" class="font-serif text-3xl font-bold tracking-wide text-brown-900">
+        SYNCÈRA
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#accueil" class="text-sm font-semibold tracking-widest text-brown-900 hover:text-brown-700 transition-colors">ACCUEIL</a>
+        <a href="#a-propos" class="text-sm font-semibold tracking-widest text-brown-900 hover:text-brown-700 transition-colors">À PROPOS</a>
+        <a href="#services" class="text-sm font-semibold tracking-widest text-brown-900 hover:text-brown-700 transition-colors">SERVICE</a>
+        <a href="#contact" class="text-sm font-semibold tracking-widest text-brown-900 hover:text-brown-700 transition-colors">CONTACT</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3 text-sm font-medium text-brown-900">
+        <button class="hover:text-brown-700 transition-colors">FR</button>
+        <span>|</span>
+        <button class="hover:text-brown-700 transition-colors">EN</button>
+      </div>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="md:hidden text-brown-900" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-cream border-t border-brown-900/10 px-6 py-4">
+      <div class="flex flex-col gap-4">
+        <a href="#accueil" class="text-sm font-semibold tracking-widest text-brown-900">ACCUEIL</a>
+        <a href="#a-propos" class="text-sm font-semibold tracking-widest text-brown-900">À PROPOS</a>
+        <a href="#services" class="text-sm font-semibold tracking-widest text-brown-900">SERVICE</a>
+        <a href="#contact" class="text-sm font-semibold tracking-widest text-brown-900">CONTACT</a>
+        <div class="flex gap-3 text-sm font-medium text-brown-900">
+          <button>FR</button>
+          <span>|</span>
+          <button>EN</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="accueil" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20"
+    style="background: linear-gradient(to bottom, rgba(240,235,225,0.3), rgba(240,235,225,0.7)), url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80') center/cover no-repeat;">
+    <h1 class="font-serif italic text-4xl md:text-5xl lg:text-6xl text-white max-w-4xl leading-tight mb-8 drop-shadow-lg">
+      On pense avant d'agir, on s'engage avant de promettre et on explique avant d'exécuté
+    </h1>
+    <p class="text-lg md:text-xl text-white/90 mb-10 drop-shadow-md">
+      Nous Valorisons votre temps et maximisons votre impact.
+    </p>
+    <a href="#contact" class="inline-block border-2 border-white text-white px-10 py-3 text-sm tracking-[0.3em] font-medium hover:bg-white hover:text-brown-900 transition-all duration-300">
+      ALLONS-Y!
+    </a>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="relative py-24 px-6"
+    style="background: linear-gradient(to bottom, rgba(240,235,225,0.85), rgba(240,235,225,0.85)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80') center/cover no-repeat;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Signal -->
+        <div class="space-y-3">
+          <p class="text-sm font-bold tracking-wider text-brown-700 uppercase">Signal</p>
+          <h3 class="text-lg font-bold text-brown-900">IDENTITÉ & BRANDING STRATÉGIQUE</h3>
+          <ul class="space-y-2 text-brown-800 text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+              Créer une marque qu'on reconnait avant même de lire le nom.
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+              Logo, univers visuel, charte graphique, assets digitaux & print.
+            </li>
+          </ul>
+        </div>
+
+        <!-- ScrollStop -->
+        <div class="space-y-3">
+          <p class="text-sm font-bold tracking-wider text-brown-700 uppercase">ScrollStop</p>
+          <h3 class="text-lg font-bold text-brown-900">CRÉATION DE CONTENUS À HAUTE ATTENTION</h3>
+          <ul class="space-y-2 text-brown-800 text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+              Du contenu qui capte, retient et transforme.
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+              Articles, newsletters, vidéos courtes conçues pour arrêter le scroll et rester dans les têtes.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pulse -->
+        <div class="space-y-3">
+          <p class="text-sm font-bold tracking-wider text-brown-700 uppercase">Pulse</p>
+          <h3 class="text-lg font-bold text-brown-900">ACQUISITION & MARKETING DIGITAL</h3>
+          <ul class="space-y-2 text-brown-800 text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+              Faire battre le cœur de ta croissance.
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+              SEO intelligent, publicité payante calibrée, social media orienté impact et conversion.
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+              Chaque action à un objectif. Chaque résultat est mesuré.
+            </li>
+          </ul>
+        </div>
+
+        <!-- Orbit -->
+        <div class="space-y-3">
+          <p class="text-sm font-bold tracking-wider text-brown-700 uppercase">Orbit</p>
+          <h3 class="text-lg font-bold text-brown-900">STRATÉGIE & PILOTAGE DE CROISSANCE</h3>
+          <ul class="space-y-2 text-brown-800 text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+              Donner une trajectoire claire à ta marque.
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+              Audit marketing, roadmap annuelle, KPI lisible, décisions basées sur la data et instinct créatifs.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À Propos Section -->
+  <section id="a-propos" class="py-24 px-6 bg-cream">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24">
+      <!-- Left column -->
+      <div class="space-y-8">
+        <h2 class="font-serif text-5xl md:text-6xl font-black text-brown-900 uppercase">À Propos</h2>
+        <p class="text-lg font-bold text-brown-900 leading-relaxed">
+          Nous ne faisons pas du marketing.<br>
+          Nous créons de l'impact.
+        </p>
+        <p class="text-lg font-bold text-brown-900 leading-relaxed">
+          Syncèra Digitale Studio est né d'un constat simple: Le marketing est devenu bruyant, répétitif, et prévisible.
+        </p>
+        <p class="font-serif italic text-lg font-bold text-brown-900 mt-8">
+          Nous avons choisi une autre voie.
+        </p>
+      </div>
+
+      <!-- Right column -->
+      <div class="space-y-12">
+        <div>
+          <h3 class="font-serif text-4xl md:text-5xl font-black text-brown-900 mb-4">Notre Vision</h3>
+          <p class="text-brown-800 leading-relaxed">
+            Notre mission est de créer des marques visibles, désirables et performantes — pas juste jolies, mais stratégiques.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-serif text-4xl md:text-5xl font-black text-brown-900 mb-4">Notre Approche</h3>
+          <p class="text-brown-800 leading-relaxed mb-4">
+            Chaque projet commence par une compréhension profonde :
+          </p>
+          <ul class="space-y-3 text-brown-800 leading-relaxed">
+            <li class="flex items-start gap-3">
+              <span class="mt-2 w-2 h-2 bg-brown-900 rounded-full shrink-0"></span>
+              la marque, son audience, ses enjeux, son terrain de jeu.
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="mt-2 w-2 h-2 bg-brown-900 rounded-full shrink-0"></span>
+              Ensuite, on construit: Une stratégie claire, une identité forte, des actions mesurables et des contenus qui font la différence.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nos Valeurs Section -->
+  <section class="py-24 px-6 bg-cream-dark">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+      <!-- Left: Values -->
+      <div>
+        <h2 class="font-serif italic text-5xl md:text-6xl text-brown-900 mb-16">Nos Valeurs</h2>
+        <div class="space-y-12">
+          <!-- Value 01 -->
+          <div class="flex items-start gap-6">
+            <div class="w-16 h-16 rounded-full border-2 border-brown-700 flex items-center justify-center shrink-0">
+              <span class="text-brown-700 font-light text-lg">01</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-brown-900 tracking-wider uppercase mb-1">Justesse</h4>
+              <p class="text-brown-800 text-sm leading-relaxed">
+                Faire moins, mais faire mieux.<br>
+                Des recommandations honnêtes, justifiées et des stratégies alignées avec votre réalité.
+              </p>
+            </div>
+          </div>
+
+          <!-- Value 02 -->
+          <div class="flex items-start gap-6">
+            <div class="w-16 h-16 rounded-full border-2 border-brown-700 flex items-center justify-center shrink-0">
+              <span class="text-brown-700 font-light text-lg">02</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-brown-900 tracking-wider uppercase mb-1">Engagement Sincère</h4>
+              <p class="text-brown-800 text-sm leading-relaxed">
+                S'implique réellement, humainement et durablement. Plus qu'un prestataire, un partenaire investi, présent à chaque étape. Nous nous engageons avec des personnes, pas avec des contrats.
+              </p>
+            </div>
+          </div>
+
+          <!-- Value 03 -->
+          <div class="flex items-start gap-6">
+            <div class="w-16 h-16 rounded-full border-2 border-brown-700 flex items-center justify-center shrink-0">
+              <span class="text-brown-700 font-light text-lg">03</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-brown-900 tracking-wider uppercase mb-1">Clarté</h4>
+              <p class="text-brown-800 text-sm leading-relaxed">
+                Rendre le marketing compréhensible et accessible. Sans jargons, ni zones ombres, nous expliquons nos processus et le pourquoi. Le marketing ne doit jamais être opaque.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Decorative images -->
+      <div class="hidden md:flex flex-col gap-4">
+        <div class="rounded-lg overflow-hidden h-64">
+          <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&q=80"
+               alt="Notebook and coffee"
+               class="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div class="rounded-lg overflow-hidden h-64">
+          <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80"
+               alt="Laptop on bed"
+               class="w-full h-full object-cover" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 px-6 bg-brown-900">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="font-serif text-4xl md:text-5xl font-bold text-cream mb-6">Travaillons ensemble</h2>
+      <p class="text-cream/80 mb-12 text-lg">
+        Prêt à créer quelque chose d'exceptionnel? Contactez-nous.
+      </p>
+      <form class="space-y-6 text-left" id="contact-form">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="block text-cream/70 text-sm mb-2">Nom</label>
+            <input type="text" id="name" name="name" required
+                   class="w-full bg-transparent border-b border-cream/30 text-cream py-3 focus:border-cream outline-none transition-colors" />
+          </div>
+          <div>
+            <label for="email" class="block text-cream/70 text-sm mb-2">Email</label>
+            <input type="email" id="email" name="email" required
+                   class="w-full bg-transparent border-b border-cream/30 text-cream py-3 focus:border-cream outline-none transition-colors" />
+          </div>
+        </div>
+        <div>
+          <label for="message" class="block text-cream/70 text-sm mb-2">Message</label>
+          <textarea id="message" name="message" rows="4" required
+                    class="w-full bg-transparent border-b border-cream/30 text-cream py-3 focus:border-cream outline-none transition-colors resize-none"></textarea>
+        </div>
+        <div class="text-center pt-4">
+          <button type="submit"
+                  class="border-2 border-cream text-cream px-12 py-3 text-sm tracking-[0.3em] font-medium hover:bg-cream hover:text-brown-900 transition-all duration-300">
+            ENVOYER
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brown-900 border-t border-cream/10 py-8 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="font-serif text-xl text-cream font-bold">SYNCÈRA</p>
+      <p class="text-cream/50 text-sm">&copy; 2026 Syncèra Digitale Studio. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      menu?.classList.toggle('hidden');
+    });
+    // Close mobile menu on link click
+    menu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => menu?.classList.add('hidden'));
+    });
+  </script>
+</Layout>
