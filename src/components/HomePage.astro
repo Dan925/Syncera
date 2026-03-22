@@ -1,0 +1,226 @@
+---
+import type { Locale } from '../i18n/translations';
+import { t, getLocalePath, getAlternateLocale } from '../i18n/translations';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const i = t(locale);
+const altLocale = getAlternateLocale(locale);
+const altPath = getLocalePath(altLocale);
+---
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-cream/90 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href={getLocalePath(locale)} class="font-serif text-3xl font-bold tracking-wide text-brown-900">
+      SYNCÈRA
+    </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href={getLocalePath(locale, '#accueil')} class="text-sm font-semibold tracking-widest text-brown-900 hover:text-brown-700 transition-colors">{i.nav.home}</a>
+      <a href={getLocalePath(locale, '#a-propos')} class="text-sm font-semibold tracking-widest text-brown-900 hover:text-brown-700 transition-colors">{i.nav.about}</a>
+      <a href={getLocalePath(locale, '#services')} class="text-sm font-semibold tracking-widest text-brown-900 hover:text-brown-700 transition-colors">{i.nav.services}</a>
+      <a href={getLocalePath(locale, '#contact')} class="text-sm font-semibold tracking-widest text-brown-900 hover:text-brown-700 transition-colors">{i.nav.contact}</a>
+    </div>
+    <div class="hidden md:flex items-center gap-3 text-sm font-medium text-brown-900">
+      <a href="/" class:list={[locale === 'fr' ? 'font-bold underline underline-offset-4' : 'hover:text-brown-700 transition-colors']}>FR</a>
+      <span>|</span>
+      <a href="/en/" class:list={[locale === 'en' ? 'font-bold underline underline-offset-4' : 'hover:text-brown-700 transition-colors']}>EN</a>
+    </div>
+    <!-- Mobile menu button -->
+    <button id="mobile-menu-btn" class="md:hidden text-brown-900" aria-label="Menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-cream border-t border-brown-900/10 px-6 py-4">
+    <div class="flex flex-col gap-4">
+      <a href={getLocalePath(locale, '#accueil')} class="text-sm font-semibold tracking-widest text-brown-900">{i.nav.home}</a>
+      <a href={getLocalePath(locale, '#a-propos')} class="text-sm font-semibold tracking-widest text-brown-900">{i.nav.about}</a>
+      <a href={getLocalePath(locale, '#services')} class="text-sm font-semibold tracking-widest text-brown-900">{i.nav.services}</a>
+      <a href={getLocalePath(locale, '#contact')} class="text-sm font-semibold tracking-widest text-brown-900">{i.nav.contact}</a>
+      <div class="flex gap-3 text-sm font-medium text-brown-900">
+        <a href="/" class:list={[locale === 'fr' ? 'font-bold underline underline-offset-4' : '']}>FR</a>
+        <span>|</span>
+        <a href="/en/" class:list={[locale === 'en' ? 'font-bold underline underline-offset-4' : '']}>EN</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="accueil" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20"
+  style="background: linear-gradient(to bottom, rgba(240,235,225,0.3), rgba(240,235,225,0.7)), url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1920&q=80') center/cover no-repeat;">
+  <h1 class="font-serif italic text-4xl md:text-5xl lg:text-6xl text-white max-w-4xl leading-tight mb-8 drop-shadow-lg">
+    {i.hero.tagline}
+  </h1>
+  <p class="text-lg md:text-xl text-white/90 mb-10 drop-shadow-md">
+    {i.hero.subtitle}
+  </p>
+  <a href={getLocalePath(locale, '#contact')} class="inline-block border-2 border-white text-white px-10 py-3 text-sm tracking-[0.3em] font-medium hover:bg-white hover:text-brown-900 transition-all duration-300">
+    {i.hero.cta}
+  </a>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="relative py-24 px-6"
+  style="background: linear-gradient(to bottom, rgba(240,235,225,0.85), rgba(240,235,225,0.85)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80') center/cover no-repeat;">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+      {[i.services.signal, i.services.scrollstop, i.services.pulse, i.services.orbit].map((service) => (
+        <div class="space-y-3">
+          <p class="text-sm font-bold tracking-wider text-brown-700 uppercase">{service.name}</p>
+          <h3 class="text-lg font-bold text-brown-900">{service.title}</h3>
+          <ul class="space-y-2 text-brown-800 text-sm leading-relaxed">
+            {service.items.map((item) => (
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 w-1.5 h-1.5 bg-brown-700 rounded-full shrink-0"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- À Propos Section -->
+<section id="a-propos" class="py-24 px-6 bg-cream">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24">
+    <!-- Left column -->
+    <div class="space-y-8">
+      <h2 class="font-serif text-5xl md:text-6xl font-black text-brown-900 uppercase">{i.about.title}</h2>
+      <p class="text-lg font-bold text-brown-900 leading-relaxed whitespace-pre-line">
+        {i.about.intro1}
+      </p>
+      <p class="text-lg font-bold text-brown-900 leading-relaxed">
+        {i.about.intro2}
+      </p>
+      <p class="font-serif italic text-lg font-bold text-brown-900 mt-8">
+        {i.about.motto}
+      </p>
+    </div>
+
+    <!-- Right column -->
+    <div class="space-y-12">
+      <div>
+        <h3 class="font-serif text-4xl md:text-5xl font-black text-brown-900 mb-4">{i.about.visionTitle}</h3>
+        <p class="text-brown-800 leading-relaxed">
+          {i.about.visionText}
+        </p>
+      </div>
+      <div>
+        <h3 class="font-serif text-4xl md:text-5xl font-black text-brown-900 mb-4">{i.about.approachTitle}</h3>
+        <p class="text-brown-800 leading-relaxed mb-4">
+          {i.about.approachIntro}
+        </p>
+        <ul class="space-y-3 text-brown-800 leading-relaxed">
+          {i.about.approachItems.map((item) => (
+            <li class="flex items-start gap-3">
+              <span class="mt-2 w-2 h-2 bg-brown-900 rounded-full shrink-0"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nos Valeurs Section -->
+<section class="py-24 px-6 bg-cream-dark">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+    <!-- Left: Values -->
+    <div>
+      <h2 class="font-serif italic text-5xl md:text-6xl text-brown-900 mb-16">{i.values.title}</h2>
+      <div class="space-y-12">
+        {i.values.items.map((value, index) => (
+          <div class="flex items-start gap-6">
+            <div class="w-16 h-16 rounded-full border-2 border-brown-700 flex items-center justify-center shrink-0">
+              <span class="text-brown-700 font-light text-lg">{String(index + 1).padStart(2, '0')}</span>
+            </div>
+            <div>
+              <h4 class="font-bold text-brown-900 tracking-wider uppercase mb-1">{value.name}</h4>
+              <p class="text-brown-800 text-sm leading-relaxed whitespace-pre-line">
+                {value.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Right: Decorative images -->
+    <div class="hidden md:flex flex-col gap-4">
+      <div class="rounded-lg overflow-hidden h-64">
+        <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&q=80"
+             alt="Notebook and coffee"
+             class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="rounded-lg overflow-hidden h-64">
+        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80"
+             alt="Laptop on bed"
+             class="w-full h-full object-cover" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-24 px-6 bg-brown-900">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="font-serif text-4xl md:text-5xl font-bold text-cream mb-6">{i.contact.title}</h2>
+    <p class="text-cream/80 mb-12 text-lg">
+      {i.contact.subtitle}
+    </p>
+    <form class="space-y-6 text-left" id="contact-form">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <label for="name" class="block text-cream/70 text-sm mb-2">{i.contact.nameLabel}</label>
+          <input type="text" id="name" name="name" required
+                 class="w-full bg-transparent border-b border-cream/30 text-cream py-3 focus:border-cream outline-none transition-colors" />
+        </div>
+        <div>
+          <label for="email" class="block text-cream/70 text-sm mb-2">{i.contact.emailLabel}</label>
+          <input type="email" id="email" name="email" required
+                 class="w-full bg-transparent border-b border-cream/30 text-cream py-3 focus:border-cream outline-none transition-colors" />
+        </div>
+      </div>
+      <div>
+        <label for="message" class="block text-cream/70 text-sm mb-2">{i.contact.messageLabel}</label>
+        <textarea id="message" name="message" rows="4" required
+                  class="w-full bg-transparent border-b border-cream/30 text-cream py-3 focus:border-cream outline-none transition-colors resize-none"></textarea>
+      </div>
+      <div class="text-center pt-4">
+        <button type="submit"
+                class="border-2 border-cream text-cream px-12 py-3 text-sm tracking-[0.3em] font-medium hover:bg-cream hover:text-brown-900 transition-all duration-300">
+          {i.contact.submit}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-brown-900 border-t border-cream/10 py-8 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="font-serif text-xl text-cream font-bold">SYNCÈRA</p>
+    <p class="text-cream/50 text-sm">{i.footer.rights}</p>
+  </div>
+</footer>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => menu?.classList.add('hidden'));
+  });
+</script>
