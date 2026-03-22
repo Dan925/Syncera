@@ -47,7 +47,7 @@ export const translations = {
       },
     },
     about: {
-      title: 'À Propos',
+      title: 'What We Do',
       intro1: "Nous ne faisons pas du marketing.\nNous créons de l'impact.",
       intro2: 'Syncèra Digitale Studio est né d\'un constat simple: Le marketing est devenu bruyant, répétitif, et prévisible.',
       motto: 'Nous avons choisi une autre voie.',
@@ -137,7 +137,7 @@ export const translations = {
       },
     },
     about: {
-      title: 'About',
+      title: 'What We Do',
       intro1: "We don't do marketing.\nWe create impact.",
       intro2: 'Syncèra Digitale Studio was born from a simple observation: Marketing has become noisy, repetitive, and predictable.',
       motto: 'We chose a different path.',
