@@ -19,5 +19,11 @@ export default {
       },
     },
   },
+  safelist: [
+    'bg-green-800',
+    'bg-red-800',
+    'translate-y-0',
+    'opacity-100',
+  ],
   plugins: [],
 };

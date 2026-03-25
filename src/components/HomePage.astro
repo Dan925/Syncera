@@ -207,10 +207,15 @@ const altPath = getLocalePath(altLocale);
           {i.contact.submit}
         </button>
       </div>
-      <p id="form-status" class="text-center mt-4 text-sm hidden"></p>
     </form>
   </div>
 </section>
+
+<!-- Toast Notification -->
+<div id="toast"
+     class="fixed bottom-8 left-1/2 -translate-x-1/2 px-6 py-4 text-sm font-medium tracking-wide shadow-lg transition-all duration-300 translate-y-24 opacity-0 pointer-events-none z-50 whitespace-nowrap"
+     role="status" aria-live="polite">
+</div>
 
 <!-- Footer -->
 <footer class="bg-brown-900 border-t border-cream/10 py-8 px-6">
@@ -232,11 +237,39 @@ const altPath = getLocalePath(altLocale);
 
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const submitBtn = document.getElementById('contact-submit') as HTMLButtonElement | null;
-  const status = document.getElementById('form-status') as HTMLParagraphElement | null;
+  const toast = document.getElementById('toast') as HTMLDivElement | null;
+
+  let toastTimer: ReturnType<typeof setTimeout> | null = null;
+
+  function showToast(message: string, type: 'success' | 'error') {
+    if (!toast) return;
+    if (toastTimer) clearTimeout(toastTimer);
+
+    toast.textContent = message;
+    toast.className = toast.className
+      .replace(/bg-\S+|text-\S+(?=\s|$)/g, '')
+      .trim();
+
+    if (type === 'success') {
+      toast.classList.add('bg-green-800', 'text-cream');
+    } else {
+      toast.classList.add('bg-red-800', 'text-cream');
+    }
+
+    // Slide in
+    toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    // Auto-dismiss after 4s
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+    }, 4000);
+  }
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!submitBtn || !status) return;
+    if (!submitBtn) return;
 
     const msgs = {
       sending: form.dataset.sending || 'Sending...',
@@ -248,7 +281,6 @@ const altPath = getLocalePath(altLocale);
 
     submitBtn.disabled = true;
     submitBtn.textContent = msgs.sending;
-    status.classList.add('hidden');
 
     const data = {
       name: (form.querySelector('#name') as HTMLInputElement).value.trim(),
@@ -263,23 +295,16 @@ const altPath = getLocalePath(altLocale);
         body: JSON.stringify(data),
       });
 
-      status.classList.remove('hidden', 'text-green-400', 'text-red-400');
-
       if (res.ok) {
-        status.textContent = msgs.success;
-        status.classList.add('text-green-400');
+        showToast(msgs.success, 'success');
         form.reset();
       } else if (res.status === 429) {
-        status.textContent = msgs.rateLimit;
-        status.classList.add('text-red-400');
+        showToast(msgs.rateLimit, 'error');
       } else {
-        status.textContent = msgs.error;
-        status.classList.add('text-red-400');
+        showToast(msgs.error, 'error');
       }
     } catch {
-      status.classList.remove('hidden', 'text-green-400', 'text-red-400');
-      status.textContent = msgs.error;
-      status.classList.add('text-red-400');
+      showToast(msgs.error, 'error');
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = msgs.submit;
