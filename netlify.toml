@@ -13,4 +13,4 @@
   from = "/*"
   to = "/landing/:splat"
   status = 200
-  conditions = { Host = ["landing.syncera.com"] }
+  conditions = { Host = ["landing.syncerainc.com"] }
