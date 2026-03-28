@@ -1,0 +1,2 @@
+https://landing.syncerainc.com/* /landing/:splat 200!
+http://landing.syncerainc.com/* /landing/:splat 200!
