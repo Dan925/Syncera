@@ -7,3 +7,10 @@
 
 [functions]
   directory = "netlify/functions"
+
+# Landing subdomain → /landing rewrite
+[[redirects]]
+  from = "/*"
+  to = "/landing/:splat"
+  status = 200
+  conditions = { Host = ["landing.syncera.com"] }
