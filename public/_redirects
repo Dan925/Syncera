@@ -1,2 +1,6 @@
+https://landing.syncerainc.com/_astro/* /_astro/:splat 200!
+http://landing.syncerainc.com/_astro/* /_astro/:splat 200!
+https://landing.syncerainc.com/favicon.svg /favicon.svg 200!
+http://landing.syncerainc.com/favicon.svg /favicon.svg 200!
 https://landing.syncerainc.com/* /landing/:splat 200!
 http://landing.syncerainc.com/* /landing/:splat 200!
