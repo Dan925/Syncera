@@ -89,6 +89,11 @@ export const translations = {
       error: "Une erreur s'est produite. Veuillez réessayer.",
       rateLimit: 'Trop de messages. Veuillez réessayer plus tard.',
     },
+    bottomCta: {
+      title: 'Prêts à passer à l\'action?',
+      subtitle: 'Réservez un appel gratuit et découvrons ensemble comment faire croître votre marque.',
+      button: 'RÉSERVER UN APPEL',
+    },
     footer: {
       rights: '© 2026 Syncèra Digitale Studio. Tous droits réservés.',
     },
@@ -182,6 +187,11 @@ export const translations = {
       success: 'Message sent successfully!',
       error: 'Something went wrong. Please try again.',
       rateLimit: 'Too many messages. Please try again later.',
+    },
+    bottomCta: {
+      title: 'Ready to take action?',
+      subtitle: 'Book a free call and let\'s discover together how to grow your brand.',
+      button: 'BOOK A CALL',
     },
     footer: {
       rights: '© 2026 Syncèra Digitale Studio. All rights reserved.',
