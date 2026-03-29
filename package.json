@@ -11,6 +11,7 @@
         "pre-push": "npm run build"
     },
     "dependencies": {
+        "@anthropic-ai/sdk": "^0.80.0",
         "@astrojs/tailwind": "^6.0.2",
         "@upstash/ratelimit": "^2.0.8",
         "@upstash/redis": "^1.37.0",
