@@ -158,7 +158,7 @@ function buildEmailHtml(name: string, email: string, message: string): string {
           <!-- Footer -->
           <tr>
             <td style="background-color:#3d3027;padding:20px 40px;text-align:center;">
-              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#7a6654;">syncera.ca &mdash; Reply directly to this email to respond to ${name}.</p>
+              <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#7a6654;">syncerainc.com &mdash; Reply directly to this email to respond to ${name}.</p>
             </td>
           </tr>
 
