@@ -444,5 +444,5 @@ flowchart TD
     F --> G[dist/ deployed to CDN]
     F --> H[netlify/functions/ compiled]
     G --> I[Site live at syncerainc.com]
-    H --> J[Functions live at /.netlify/functions/]
+    G --> I[Site live at syncerainc.com]
 ```
