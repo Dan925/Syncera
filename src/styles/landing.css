@@ -534,7 +534,7 @@ section {
     .bottom-cta-section {
         position: sticky;
         height: auto;
-        padding: 24px 18px;
+        padding-bottom: 80px;
     }
 
     .bottom-cta-section>div {
