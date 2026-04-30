@@ -501,7 +501,7 @@ section {
 .bottom-cta-section {
     position: sticky;
     bottom: 0;
-    background: var(--bg-card);
+    background-color: var(--bg-card);
     border-top: 1px solid var(--bg-card-border);
     display: flex;
     width: 100%;
@@ -509,6 +509,9 @@ section {
     justify-content: center;
     align-items: center;
     padding: 24px;
+    z-index: 10;
+    isolation: isolate;
+    transform: translateZ(0);
 }
 
 .bottom-cta-section>div {
